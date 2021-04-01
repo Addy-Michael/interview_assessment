@@ -8,6 +8,8 @@ import {
   SET_RESULT,
   GET_REPOS,
   GET_ORGS,
+  GIT_ERROR,
+  CLEAR_GIT_ERROR,
 } from "../types";
 
 const GithubState = (props) => {
@@ -16,19 +18,30 @@ const GithubState = (props) => {
     result: false,
     repos: [],
     orgs: [],
+    error: null,
   };
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   // Search User
   const getUser = async (username) => {
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
+    try {
+      const res = await axios.get(
+        `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      );
 
-    dispatch({ type: SEARCH_USER, payload: res.data });
+      console.log("i work");
 
-    setResult();
+      dispatch({ type: SEARCH_USER, payload: res.data });
+
+      getRepos(username);
+
+      getOrgs(username);
+
+      setResult();
+    } catch (error) {
+      gitError("User does not exist");
+    }
   };
 
   // Get repo
@@ -54,6 +67,18 @@ const GithubState = (props) => {
     dispatch({ type: SET_RESULT });
   };
 
+  // Get git error
+  const gitError = (msg) => {
+    dispatch({ type: GIT_ERROR, payload: msg });
+
+    setTimeout(() => {
+      clearGitError();
+    }, 5000);
+  };
+
+  // clear alert
+  const clearGitError = () => dispatch({ type: CLEAR_GIT_ERROR });
+
   // Clear User
   const clearSearch = () => dispatch({ type: CLEAR_SEARCH });
 
@@ -64,10 +89,13 @@ const GithubState = (props) => {
         result: state.result,
         repos: state.repos,
         orgs: state.orgs,
+        error: state.error,
         getUser,
         getRepos,
         getOrgs,
         clearSearch,
+        gitError,
+        clearGitError,
       }}
     >
       {props.children}

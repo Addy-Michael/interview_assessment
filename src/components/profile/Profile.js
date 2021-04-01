@@ -37,7 +37,12 @@ const Profile = () => {
                   <p className='repos'>
                     Public Repos: <span>{public_repos}</span>
                   </p>
-                  <a className='git-profile' href={html_url} target='_blank'>
+                  <a
+                    className='git-profile'
+                    rel='noreferrer'
+                    href={html_url}
+                    target='_blank'
+                  >
                     Visit Profile
                   </a>
                 </div>

@@ -5,3 +5,5 @@ export const GET_REPOS = "GET_REPOS";
 export const GET_ORGS = "GET_ORGS";
 export const SET_ALERT = "SET_ALERT";
 export const CLEAR_ALERT = "CLEAR_ALERT";
+export const GIT_ERROR = "GET_ERROR";
+export const CLEAR_GIT_ERROR = "GET_ERROR";
