@@ -6,10 +6,12 @@ const Repos = () => {
   const githubContext = useContext(GithubContext);
   const { repos } = githubContext;
 
+  // return <h1>hello</h1>;
+
   return (
     <div className='repo__content'>
-      {repos.map((repo) => (
-        <RepoItem repo={repo} />
+      {repos.map((repo, index) => (
+        <RepoItem key={index} repo={repo} />
       ))}
     </div>
   );

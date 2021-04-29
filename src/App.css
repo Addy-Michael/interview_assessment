@@ -6,6 +6,8 @@
   --color_followers: #078219;
   --color_repos: #a9aba9;
   --color_bio: #0004ad;
+  --color_repo-view: #06086b;
+  --color_orgs-view: #82052d;
 }
 
 * {
@@ -49,7 +51,8 @@ body {
   width: 25rem;
   border-radius: 50%;
   overflow: hidden;
-  margin-left: 15rem;
+  margin-right: 10rem;
+  margin-left: 2rem;
 }
 
 .profile__image img {
@@ -74,16 +77,36 @@ body {
   margin-bottom: 1rem;
 }
 
-.profile__details .detail p {
+.profile__details .detail p,
+.profile__details .profile-result a:not(:last-child) {
   margin-right: 2rem;
 }
 
 .profile__details .detail .following,
 .profile__details .detail .followers,
 .profile__details .detail .repos,
-.profile__details .detail .git-profile {
+.profile__details .detail .git-profile,
+.profile__details .profile-result .repo-view,
+.profile__details .profile-result .orgs-view {
   padding: 0.5rem 1rem;
   border-radius: 3px;
+}
+
+.profile__details .profile-result {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.profile__details .profile-result .repo-view {
+  background: var(--color_repo-view);
+  text-decoration: none;
+  color: var(--color_white);
+}
+
+.profile__details .profile-result .orgs-view {
+  background: var(--color_orgs-view);
+  text-decoration: none;
+  color: var(--color_white);
 }
 
 .profile__details .detail .following {
@@ -114,26 +137,27 @@ body {
   text-align: center;
 }
 
-.search__results {
-  display: flex;
-}
-
 .repo__content,
 .orgs__content {
-  width: 50%;
+  width: 100%;
   font-size: 2.5rem;
   color: var(--color_white);
 }
 
 .repo__content .repo {
-  margin-right: 1.5rem;
   display: block;
   text-decoration: none;
   color: var(--color_white);
 }
 
-.orgs__content .orgs {
-  margin-left: 1.5rem;
+.repo__content .repo:hover {
+  color: var(--color_repos);
+  border: solid 1px var(--color_repos);
+}
+
+.orgs__content .org_error {
+  margin-top: 10%;
+  text-align: center;
 }
 
 .repo__content .repo,

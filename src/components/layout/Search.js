@@ -3,7 +3,7 @@ import GithubContext from "../../context/github/githubContext";
 
 const Search = () => {
   const githubContext = useContext(GithubContext);
-  const { getUser, getRepos, result, clearSearch } = githubContext;
+  const { getUser, getRepos, result, clearSearch, getOrgs } = githubContext;
 
   const [username, setUsername] = useState("");
 
@@ -14,6 +14,7 @@ const Search = () => {
   const onClick = () => {
     getUser(username.trim());
     getRepos(username.trim());
+    getOrgs(username.trim());
     setUsername("");
   };
 

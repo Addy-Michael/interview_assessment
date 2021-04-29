@@ -1,4 +1,10 @@
-import { SEARCH_USER, CLEAR_SEARCH, SET_RESULT, GET_REPOS } from "../types";
+import {
+  SEARCH_USER,
+  CLEAR_SEARCH,
+  SET_RESULT,
+  GET_REPOS,
+  GET_ORGS,
+} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -14,6 +20,12 @@ export default (state, action) => {
         repos: action.payload,
       };
 
+    case GET_ORGS:
+      return {
+        ...state,
+        orgs: action.payload,
+      };
+
     case SET_RESULT:
       return {
         ...state,
@@ -25,6 +37,7 @@ export default (state, action) => {
         ...state,
         user: {},
         repos: [],
+        orgs: [],
         result: false,
       };
 

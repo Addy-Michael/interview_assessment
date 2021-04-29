@@ -22,7 +22,9 @@ const GithubState = (props) => {
 
   // Search User
   const getUser = async (username) => {
-    const res = await axios.get(`https://api.github.com/users/${username}`);
+    const res = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
 
     dispatch({ type: SEARCH_USER, payload: res.data });
 
@@ -32,7 +34,7 @@ const GithubState = (props) => {
   // Get repo
   const getRepos = async (username) => {
     const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5`
+      `https://api.github.com/users/${username}/repos?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
 
     dispatch({ type: GET_REPOS, payload: res.data });
@@ -41,9 +43,10 @@ const GithubState = (props) => {
   // Get orgs
   const getOrgs = async (username) => {
     const res = await axios.get(
-      `https://api.github.com//users/${username}/orgs`
+      `https://api.github.com/users/${username}/orgs?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
-    console.log(res);
+
+    dispatch({ type: GET_ORGS, payload: res.data });
   };
 
   // Set result

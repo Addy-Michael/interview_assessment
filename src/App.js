@@ -1,10 +1,10 @@
-// import React, { useContext, Fragment } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/profile/Profile";
 import Repos from "./components/repos/Repos";
 import Orgs from "./components/organisation/Orgs";
 import Search from "./components/layout/Search";
 import GithubState from "./context/github/GithubState";
-import GithubContext from "./context/github/githubContext";
 import "./App.css";
 
 function App() {
@@ -12,16 +12,20 @@ function App() {
 
   return (
     <GithubState>
-      <div className='App'>
-        <Search />
-        <Profile />
-        <div className='container'>
-          <div className='search__results'>
-            <Repos />
-            <Orgs />
+      <Router>
+        <div className='App'>
+          <Search />
+          <Profile />
+          <div className='container'>
+            <div className='search__results'>
+              <Switch>
+                <Route exact path='/repos' component={Repos} />
+                <Route exact path='/orgs' component={Orgs} />
+              </Switch>
+            </div>
           </div>
         </div>
-      </div>
+      </Router>
     </GithubState>
   );
 }

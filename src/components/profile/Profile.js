@@ -1,11 +1,11 @@
 import React, { useContext, Fragment } from "react";
+import { Link } from "react-router-dom";
 import GithubContext from "../../context/github/githubContext";
-import Kwaw from "../KWAW.JPG";
 
 const Profile = () => {
   const githubContext = useContext(GithubContext);
   const { user, result } = githubContext;
-  console.log(user);
+
   const {
     avatar_url,
     bio,
@@ -15,8 +15,6 @@ const Profile = () => {
     html_url,
     name,
   } = user;
-
-  console.log(avatar_url);
 
   return (
     <Fragment>
@@ -44,6 +42,14 @@ const Profile = () => {
                   </a>
                 </div>
                 <p className='bio'>{bio}</p>
+                <div className='profile-result'>
+                  <Link to='/repos' className='repo-view'>
+                    View Repos
+                  </Link>
+                  <Link to='/orgs' className='orgs-view'>
+                    View Organisation
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
