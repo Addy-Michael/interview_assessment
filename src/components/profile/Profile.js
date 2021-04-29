@@ -23,7 +23,7 @@ const Profile = () => {
           <div className='container'>
             <div className='profile__content'>
               <div className='profile__image'>
-                <img src={user.avatar_url} className='img' />
+                <img src={avatar_url} alt='profile_picture' className='img' />
               </div>
               <div className='profile__details'>
                 <h1 className='name l-heading'>{name}</h1>

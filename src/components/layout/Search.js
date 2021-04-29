@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import GithubContext from "../../context/github/githubContext";
+import AlertContext from "../../context/alert/alertContext";
 
 const Search = () => {
   const githubContext = useContext(GithubContext);
+  const alertContext = useContext(AlertContext);
+
   const { getUser, getRepos, result, clearSearch, getOrgs } = githubContext;
+  const { setAlert } = alertContext;
 
   const [username, setUsername] = useState("");
 
@@ -12,10 +16,14 @@ const Search = () => {
   };
 
   const onClick = () => {
-    getUser(username.trim());
-    getRepos(username.trim());
-    getOrgs(username.trim());
-    setUsername("");
+    if (username !== "") {
+      getUser(username.trim());
+      getRepos(username.trim());
+      getOrgs(username.trim());
+      setUsername("");
+    } else {
+      setAlert("Please enter all fields");
+    }
   };
 
   return (
