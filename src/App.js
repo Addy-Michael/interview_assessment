@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/profile/Profile";
 import Alert from "./components/layout/Alert";
+import Header from "./components/layout/Header";
 import Repos from "./components/repos/Repos";
 import Orgs from "./components/organisation/Orgs";
 import Search from "./components/layout/Search";
@@ -15,6 +16,7 @@ function App() {
       <AlertState>
         <Router>
           <div className='App'>
+            <Header />
             <Search />
             <Alert />
             <Profile />

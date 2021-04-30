@@ -219,3 +219,12 @@ body {
   font-size: 2rem;
   color: var(--color_white);
 }
+
+.header {
+  background: crimson;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 5rem;
+  color: var(--color_white);
+  margin-bottom: 1rem;
+}
