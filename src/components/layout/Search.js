@@ -22,7 +22,7 @@ const Search = () => {
       getOrgs(username.trim());
       setUsername("");
     } else {
-      setAlert("Please enter all fields");
+      setAlert("Please enter field to search");
     }
   };
 

@@ -211,3 +211,11 @@ body {
 .search__clear:hover {
   background: var(--color_repos);
 }
+
+.alert {
+  text-align: center;
+  background: crimson;
+  padding: 1rem 0;
+  font-size: 2rem;
+  color: var(--color_white);
+}
